@@ -8,11 +8,7 @@ export interface StaffFormData {
   department: string;
   email: string;
   phone: string;
-  unit: string;
   status: string;
-  contractValue: string;
-  contractStartDate: string;
-  contractEndDate: string;
   satisfaction?: string;
 }
 
@@ -27,11 +23,7 @@ export default function AddStaffModal({ onClose, onSave }: AddStaffModalProps) {
     department: "",
     email: "",
     phone: "",
-    unit: "",
     status: "Prospect",
-    contractValue: "",
-    contractStartDate: "",
-    contractEndDate: "",
     satisfaction: "",
   });
 
@@ -56,12 +48,7 @@ export default function AddStaffModal({ onClose, onSave }: AddStaffModalProps) {
         department: formData.department,
         email: formData.email,
         phoneNumber: formData.phone,
-        unit: formData.unit,
         status: formData.status,
-        contractValue: Number(formData.contractValue) || 0,
-        contractStartDate: formData.contractStartDate || null,
-        contractEndDate: formData.contractEndDate || null,
-        joinedDate: formData.contractStartDate || null,
       };
 
       const token =
@@ -157,7 +144,7 @@ export default function AddStaffModal({ onClose, onSave }: AddStaffModalProps) {
               required
             />
             <InputField
-              label="Department *"
+              label="Department/Unit *"
               name="department"
               value={formData.department}
               onChange={handleChange}
@@ -177,12 +164,6 @@ export default function AddStaffModal({ onClose, onSave }: AddStaffModalProps) {
               value={formData.phone}
               onChange={handleChange}
             />
-            <InputField
-              label="Unit"
-              name="unit"
-              value={formData.unit}
-              onChange={handleChange}
-            />
             <SelectField
               label="Status"
               name="status"
@@ -197,38 +178,7 @@ export default function AddStaffModal({ onClose, onSave }: AddStaffModalProps) {
                 "Terminated",
               ]}
             />
-            <InputField
-              label="Contract Value (₦)"
-              name="contractValue"
-              type="number"
-              value={formData.contractValue}
-              onChange={handleChange}
-            />
-            <InputField
-              label="Contract Start Date"
-              name="contractStartDate"
-              type="date"
-              value={formData.contractStartDate}
-              onChange={handleChange}
-            />
-            <InputField
-              label="Contract End Date"
-              name="contractEndDate"
-              type="date"
-              value={formData.contractEndDate}
-              onChange={handleChange}
-            />
-            <InputField
-              label="Satisfaction (1.1 - 9.9)"
-              name="satisfaction"
-              type="number"
-              step="0.1"
-              min="1.1"
-              max="9.9"
-              value={formData.satisfaction}
-              onChange={handleChange}
-              placeholder="e.g. 4.4"
-            />
+
           </div>
 
           {error && <p className="text-sm text-red-600">{error}</p>}
