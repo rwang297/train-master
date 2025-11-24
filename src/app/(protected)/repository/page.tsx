@@ -361,12 +361,11 @@ export default function RepositoryPage() {
         </div>
       </header>
 
-      <section className="controls mb-6 flex flex-col md:flex-row gap-3">
-        <input
-          placeholder="Search reports by title, description, or tags"
+      <section className="controls mb-6 flex flex-col md:flex-row gap-3 md:items-center">
+        <ResponsiveSearch
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="flex-1 h-10 rounded-md border border-gray-500 px-3 text-black"
+          onChange={setSearch}
+          placeholder="Search reports by title, description, or tags"
         />
 
         <select
