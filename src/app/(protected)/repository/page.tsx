@@ -12,6 +12,7 @@ import {
 } from "react-icons/fi";
 import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
+import ResponsiveSearch from "@/components/ResponsiveSearch";
 
 type ReportCard = {
   id: number;
