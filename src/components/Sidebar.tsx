@@ -20,26 +20,36 @@ export default function Sidebar({ isOpen = true, onClose, isCollapsed = false }:
 
   return (
     <aside className={`sidebar-root h-full w-full bg-white border-r border-slate-100 flex flex-col z-20 overflow-y-auto transition-all duration-300`}>
-      <div className="px-4 pt-5 pb-4 flex items-center justify-between">
-        <div className="brand-row flex items-center gap-3">
+      <div className={`px-4 pt-5 pb-4 flex items-center ${isCollapsed ? "justify-center" : "justify-between"}`}>
+        <div className={`brand-row flex items-center gap-3 ${isCollapsed ? "hidden lg:flex lg:flex-col lg:gap-1" : ""}`}>
           <div className="brand-logo h-12 w-12 rounded-xl  text-white flex items-center justify-center shadow-sm">
              <div className="file-icon h-15 w-15 rounded-md  flex items-center justify-center text-sky-600">
                  <FiFileText />
                </div>
           </div>
 
-          <div className="brand-text">
-            <h3 className="text-sm font-semibold text-slate-800">TrainDocs</h3>
-            <p className="text-xs text-slate-500">Training Reports Repository</p>
-          </div>
+          {!isCollapsed && (
+            <div className="brand-text">
+              <h3 className="text-sm font-semibold text-slate-800">TrainDocs</h3>
+              <p className="text-xs text-slate-500">Training Reports Repository</p>
+            </div>
+          )}
         </div>
-        <button
-          onClick={onClose}
-          className="md:hidden p-1 text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-md"
-          aria-label="Close sidebar"
-        >
-          <FiX size={24} />
-        </button>
+        {isCollapsed ? (
+          <div className="h-12 w-12 rounded-xl text-white flex items-center justify-center shadow-sm">
+            <div className="file-icon h-12 w-12 rounded-md flex items-center justify-center text-sky-600">
+              <FiFileText size={20} />
+            </div>
+          </div>
+        ) : (
+          <button
+            onClick={onClose}
+            className="lg:hidden p-1 text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-md"
+            aria-label="Close sidebar"
+          >
+            <FiX size={24} />
+          </button>
+        )}
       </div>
 
       <div className="border-t border-slate-100" />
