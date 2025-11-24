@@ -49,7 +49,7 @@ export default function Sidebar({ isOpen = true, onClose }: SidebarProps) {
         <h4 className="text-xs text-slate-400 uppercase tracking-wider mb-2">Navigation</h4>
         <ul className="space-y-1">
           <li>
-            <Link href="/repository" className={`nav-item relative flex items-center gap-3 w-full rounded-md px-3 py-2 ${isRepo ? 'bg-sky-50 text-sky-700 font-medium' : 'text-slate-700 hover:bg-slate-50'}`}>
+            <Link href="/repository" onClick={onClose} className={`nav-item relative flex items-center gap-3 w-full rounded-md px-3 py-2 ${isRepo ? 'bg-sky-50 text-sky-700 font-medium' : 'text-slate-700 hover:bg-slate-50'}`}>
               {isRepo && <span className="indicator absolute left-0 top-0 bottom-0 w-1 bg-sky-500 rounded-tr-md rounded-br-md" aria-hidden />}
               <FiDatabase className="text-lg ml-2" aria-hidden />
               <span className="text-sm">Repository</span>
@@ -57,7 +57,7 @@ export default function Sidebar({ isOpen = true, onClose }: SidebarProps) {
           </li>
 
           <li>
-            <Link href="/upload" className={`nav-item flex items-center gap-3 w-full rounded-md px-3 py-2 ${isUpload ? 'bg-sky-50 text-sky-700 font-medium' : 'text-slate-700 hover:bg-slate-50'}`}>
+            <Link href="/upload" onClick={onClose} className={`nav-item flex items-center gap-3 w-full rounded-md px-3 py-2 ${isUpload ? 'bg-sky-50 text-sky-700 font-medium' : 'text-slate-700 hover:bg-slate-50'}`}>
               {isUpload && <span className="indicator absolute left-0 top-0 bottom-0 w-1 bg-sky-500 rounded-tr-md rounded-br-md" aria-hidden />}
               <FiUpload className="text-lg text-slate-500" aria-hidden />
               <span className="text-sm">Upload Report</span>
@@ -65,14 +65,14 @@ export default function Sidebar({ isOpen = true, onClose }: SidebarProps) {
           </li>
 
           <li>
-            <Link href="/browse" className={`nav-item flex items-center gap-3 w-full rounded-md px-3 py-2 ${pathname.toLowerCase().startsWith('/browse') ? 'bg-sky-50 text-sky-700 font-medium' : 'text-slate-700 hover:bg-slate-50'}`}>
+            <Link href="/browse" onClick={onClose} className={`nav-item flex items-center gap-3 w-full rounded-md px-3 py-2 ${pathname.toLowerCase().startsWith('/browse') ? 'bg-sky-50 text-sky-700 font-medium' : 'text-slate-700 hover:bg-slate-50'}`}>
               <FiSearch className="text-lg text-slate-500" aria-hidden />
               <span className="text-sm">Browse</span>
             </Link>
           </li>
 
           <li>
-            <Link href="/staff" className={`nav-item flex items-center gap-3 w-full rounded-md px-3 py-2 ${isStaff ? 'bg-sky-50 text-sky-700 font-medium' : 'text-slate-700 hover:bg-slate-50'}`}>
+            <Link href="/staff" onClick={onClose} className={`nav-item flex items-center gap-3 w-full rounded-md px-3 py-2 ${isStaff ? 'bg-sky-50 text-sky-700 font-medium' : 'text-slate-700 hover:bg-slate-50'}`}>
               {isStaff && <span className="indicator absolute left-0 top-0 bottom-0 w-1 bg-sky-500 rounded-tr-md rounded-br-md" aria-hidden />}
               <FiUsers className="text-lg text-slate-500" aria-hidden />
               <span className="text-sm">Staff</span>
@@ -80,7 +80,7 @@ export default function Sidebar({ isOpen = true, onClose }: SidebarProps) {
           </li>
 
           <li>
-            <Link href="/settings" className={`nav-item relative flex items-center gap-3 w-full rounded-md px-3 py-2 ${isSettings ? 'bg-sky-50 text-sky-700 font-medium' : 'text-slate-700 hover:bg-slate-50'}`}>
+            <Link href="/settings" onClick={onClose} className={`nav-item relative flex items-center gap-3 w-full rounded-md px-3 py-2 ${isSettings ? 'bg-sky-50 text-sky-700 font-medium' : 'text-slate-700 hover:bg-slate-50'}`}>
               {isSettings && <span className="indicator absolute left-0 top-0 bottom-0 w-1 bg-sky-500 rounded-tr-md rounded-br-md" aria-hidden />}
               <FiSettings className="text-lg text-slate-500" aria-hidden />
               <span className="text-sm">Settings</span>
