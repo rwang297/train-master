@@ -105,41 +105,45 @@ export default function Sidebar({ isOpen = true, onClose, isCollapsed = false }:
         </ul>
       </nav>
 
-      <div className="border-t border-slate-100 mx-4" />
+      {!isCollapsed && <div className="border-t border-slate-100 mx-4" />}
 
-      <div className="px-4 py-4">
-        <h4 className="text-xs text-slate-400 uppercase tracking-wider mb-2">Quick Stats</h4>
-        <div className="stats space-y-2 text-sm text-slate-600">
-          <div className="stat-row flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <FiFolder className="text-slate-400" aria-hidden />
-              <span>Total Reports</span>
+      {!isCollapsed && (
+        <div className="px-4 py-4">
+          <h4 className="text-xs text-slate-400 uppercase tracking-wider mb-2">Quick Stats</h4>
+          <div className="stats space-y-2 text-sm text-slate-600">
+            <div className="stat-row flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <FiFolder className="text-slate-400" aria-hidden />
+                <span>Total Reports</span>
+              </div>
+              <span className="text-sky-600 font-semibold">0</span>
             </div>
-            <span className="text-sky-600 font-semibold">0</span>
-          </div>
 
-          <div className="stat-row flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <svg className="h-4 w-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M3 3h18v4H3z" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M5 11h14v10H5z" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              <span>This Month</span>
+            <div className="stat-row flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <svg className="h-4 w-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 3h18v4H3z" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M5 11h14v10H5z" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <span>This Month</span>
+              </div>
+              <span className="text-sky-600 font-semibold">0</span>
             </div>
-            <span className="text-sky-600 font-semibold">0</span>
           </div>
         </div>
-      </div>
+      )}
 
-      <div className="mt-auto px-4 pb-6">
-        <div className="user-card p-3 rounded-lg bg-slate-50 flex items-center gap-3">
-          <div className="user-avatar h-10 w-10 rounded-full bg-slate-200 flex items-center justify-center text-slate-600 font-medium">U</div>
-          <div className="user-info text-sm">
-            <div className="font-medium text-slate-800">User</div>
-            <div className="text-xs text-slate-500">Manage training reports</div>
+      {!isCollapsed && (
+        <div className="mt-auto px-4 pb-6">
+          <div className="user-card p-3 rounded-lg bg-slate-50 flex items-center gap-3">
+            <div className="user-avatar h-10 w-10 rounded-full bg-slate-200 flex items-center justify-center text-slate-600 font-medium">U</div>
+            <div className="user-info text-sm">
+              <div className="font-medium text-slate-800">User</div>
+              <div className="text-xs text-slate-500">Manage training reports</div>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </aside>
   );
 }
