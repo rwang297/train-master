@@ -12,6 +12,7 @@ import {
 } from "react-icons/fi";
 import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
+import ResponsiveSearch from "@/components/ResponsiveSearch";
 
 type ReportCard = {
   id: number;
@@ -343,29 +344,28 @@ export default function RepositoryPage() {
 
 
   return (
-    <div className="repository-page p-4 md:p-8 bg-gray-50 min-h-screen">
-      <header className="repository-header mb-6 flex items-start justify-between">
-        <div>
-          <h1 className="text-2xl font-semibold text-slate-800">Training Reports Repository</h1>
+    <div className="repository-page p-4 md:p-8 bg-gray-50 min-h-screen pt-16 md:pt-8">
+      <header className="repository-header mb-6 flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+        <div className="flex-1">
+          <h1 className="text-xl md:text-2xl font-semibold text-slate-800">Training Reports Repository</h1>
           <p className="text-sm text-slate-500 mt-1">Manage and organize all your training documentation</p>
         </div>
 
         <div className="flex items-center gap-3">
           <button
             onClick={() => router.push("/upload")}
-            className="h-10 inline-flex items-center gap-2 rounded-md bg-blue-600 text-white px-3 font-medium hover:bg-blue-600 transition"
+            className="h-10 inline-flex items-center gap-2 rounded-md bg-blue-600 text-white px-3 font-medium hover:bg-blue-600 transition whitespace-nowrap text-sm md:text-base"
           >
             + Upload Report
           </button>
         </div>
       </header>
 
-      <section className="controls mb-6 flex flex-col md:flex-row gap-3">
-        <input
-          placeholder="Search reports by title, description, or tags"
+      <section className="controls mb-6 flex flex-col md:flex-row gap-3 md:items-center">
+        <ResponsiveSearch
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="flex-1 h-10 rounded-md border border-gray-500 px-3 text-black"
+          onChange={setSearch}
+          placeholder="Search reports by title, description, or tags"
         />
 
         <select
