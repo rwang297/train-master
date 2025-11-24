@@ -2,9 +2,15 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FiDatabase, FiUpload, FiSearch, FiUsers, FiFolder, FiSettings,FiFileText } from "react-icons/fi";
+import { FiDatabase, FiUpload, FiSearch, FiUsers, FiFolder, FiSettings, FiFileText, FiX } from "react-icons/fi";
+import { useState, useEffect } from "react";
 
-export default function Sidebar() {
+interface SidebarProps {
+  isOpen?: boolean;
+  onClose?: () => void;
+}
+
+export default function Sidebar({ isOpen = true, onClose }: SidebarProps) {
   const pathname = usePathname() || "/";
   const isRepo = pathname.toLowerCase().startsWith("/repository");
   const isUpload = pathname.toLowerCase().startsWith("/upload");
@@ -12,7 +18,9 @@ export default function Sidebar() {
   const isSettings = pathname.toLowerCase().startsWith("/settings");
 
   return (
-    <aside className="sidebar-root hidden md:fixed md:left-0 md:top-0 md:h-screen md:w-72 md:bg-white md:border-r md:border-slate-100 md:flex md:flex-col md:z-20 md:overflow-y-auto">
+    <aside className={`sidebar-root fixed md:fixed md:left-0 md:top-0 md:h-screen md:w-72 md:bg-white md:border-r md:border-slate-100 md:flex md:flex-col md:z-20 md:overflow-y-auto transition-transform duration-300 ${
+      isOpen ? "translate-x-0 left-0 top-0 h-screen w-72 bg-white border-r border-slate-100 flex flex-col z-20 overflow-y-auto" : "-translate-x-full left-0 top-0 h-screen w-72 bg-white border-r border-slate-100 flex flex-col z-20 overflow-y-auto md:translate-x-0"
+    }`}>
       <div className="px-4 pt-5 pb-4">
         <div className="brand-row flex items-center gap-3">
           <div className="brand-logo h-12 w-12 rounded-xl  text-white flex items-center justify-center shadow-sm">
