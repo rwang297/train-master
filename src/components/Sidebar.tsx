@@ -54,45 +54,52 @@ export default function Sidebar({ isOpen = true, onClose, isCollapsed = false }:
 
       <div className="border-t border-slate-100" />
 
-      <nav className="px-4 py-4">
-        <h4 className="text-xs text-slate-400 uppercase tracking-wider mb-2">Navigation</h4>
+      <nav className={`${isCollapsed ? "px-2" : "px-4"} py-4`}>
+        {!isCollapsed && (
+          <h4 className="text-xs text-slate-400 uppercase tracking-wider mb-2">Navigation</h4>
+        )}
         <ul className="space-y-1">
           <li>
-            <Link href="/repository" onClick={onClose} className={`nav-item relative flex items-center gap-3 w-full rounded-md px-3 py-2 ${isRepo ? 'bg-sky-50 text-sky-700 font-medium' : 'text-slate-700 hover:bg-slate-50'}`}>
+            <Link href="/repository" onClick={onClose} className={`nav-item relative flex items-center ${isCollapsed ? "justify-center" : "gap-3"} w-full rounded-md px-3 py-2 group ${isRepo ? 'bg-sky-50 text-sky-700 font-medium' : 'text-slate-700 hover:bg-slate-50'}`} title="Repository">
               {isRepo && <span className="indicator absolute left-0 top-0 bottom-0 w-1 bg-sky-500 rounded-tr-md rounded-br-md" aria-hidden />}
-              <FiDatabase className="text-lg ml-2" aria-hidden />
-              <span className="text-sm">Repository</span>
+              <FiDatabase className={`text-lg ${isCollapsed ? "" : "ml-2"}`} aria-hidden />
+              {!isCollapsed && <span className="text-sm">Repository</span>}
+              {isCollapsed && <span className="hidden group-hover:block absolute left-full ml-2 bg-slate-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap z-50">Repository</span>}
             </Link>
           </li>
 
           <li>
-            <Link href="/upload" onClick={onClose} className={`nav-item flex items-center gap-3 w-full rounded-md px-3 py-2 ${isUpload ? 'bg-sky-50 text-sky-700 font-medium' : 'text-slate-700 hover:bg-slate-50'}`}>
+            <Link href="/upload" onClick={onClose} className={`nav-item relative flex items-center ${isCollapsed ? "justify-center" : "gap-3"} w-full rounded-md px-3 py-2 group ${isUpload ? 'bg-sky-50 text-sky-700 font-medium' : 'text-slate-700 hover:bg-slate-50'}`} title="Upload Report">
               {isUpload && <span className="indicator absolute left-0 top-0 bottom-0 w-1 bg-sky-500 rounded-tr-md rounded-br-md" aria-hidden />}
               <FiUpload className="text-lg text-slate-500" aria-hidden />
-              <span className="text-sm">Upload Report</span>
+              {!isCollapsed && <span className="text-sm">Upload Report</span>}
+              {isCollapsed && <span className="hidden group-hover:block absolute left-full ml-2 bg-slate-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap z-50">Upload Report</span>}
             </Link>
           </li>
 
           <li>
-            <Link href="/browse" onClick={onClose} className={`nav-item flex items-center gap-3 w-full rounded-md px-3 py-2 ${pathname.toLowerCase().startsWith('/browse') ? 'bg-sky-50 text-sky-700 font-medium' : 'text-slate-700 hover:bg-slate-50'}`}>
+            <Link href="/browse" onClick={onClose} className={`nav-item relative flex items-center ${isCollapsed ? "justify-center" : "gap-3"} w-full rounded-md px-3 py-2 group ${pathname.toLowerCase().startsWith('/browse') ? 'bg-sky-50 text-sky-700 font-medium' : 'text-slate-700 hover:bg-slate-50'}`} title="Browse">
               <FiSearch className="text-lg text-slate-500" aria-hidden />
-              <span className="text-sm">Browse</span>
+              {!isCollapsed && <span className="text-sm">Browse</span>}
+              {isCollapsed && <span className="hidden group-hover:block absolute left-full ml-2 bg-slate-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap z-50">Browse</span>}
             </Link>
           </li>
 
           <li>
-            <Link href="/staff" onClick={onClose} className={`nav-item flex items-center gap-3 w-full rounded-md px-3 py-2 ${isStaff ? 'bg-sky-50 text-sky-700 font-medium' : 'text-slate-700 hover:bg-slate-50'}`}>
+            <Link href="/staff" onClick={onClose} className={`nav-item relative flex items-center ${isCollapsed ? "justify-center" : "gap-3"} w-full rounded-md px-3 py-2 group ${isStaff ? 'bg-sky-50 text-sky-700 font-medium' : 'text-slate-700 hover:bg-slate-50'}`} title="Staff">
               {isStaff && <span className="indicator absolute left-0 top-0 bottom-0 w-1 bg-sky-500 rounded-tr-md rounded-br-md" aria-hidden />}
               <FiUsers className="text-lg text-slate-500" aria-hidden />
-              <span className="text-sm">Staff</span>
+              {!isCollapsed && <span className="text-sm">Staff</span>}
+              {isCollapsed && <span className="hidden group-hover:block absolute left-full ml-2 bg-slate-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap z-50">Staff</span>}
             </Link>
           </li>
 
           <li>
-            <Link href="/settings" onClick={onClose} className={`nav-item relative flex items-center gap-3 w-full rounded-md px-3 py-2 ${isSettings ? 'bg-sky-50 text-sky-700 font-medium' : 'text-slate-700 hover:bg-slate-50'}`}>
+            <Link href="/settings" onClick={onClose} className={`nav-item relative flex items-center ${isCollapsed ? "justify-center" : "gap-3"} w-full rounded-md px-3 py-2 group ${isSettings ? 'bg-sky-50 text-sky-700 font-medium' : 'text-slate-700 hover:bg-slate-50'}`} title="Settings">
               {isSettings && <span className="indicator absolute left-0 top-0 bottom-0 w-1 bg-sky-500 rounded-tr-md rounded-br-md" aria-hidden />}
               <FiSettings className="text-lg text-slate-500" aria-hidden />
-              <span className="text-sm">Settings</span>
+              {!isCollapsed && <span className="text-sm">Settings</span>}
+              {isCollapsed && <span className="hidden group-hover:block absolute left-full ml-2 bg-slate-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap z-50">Settings</span>}
             </Link>
           </li>
         </ul>
